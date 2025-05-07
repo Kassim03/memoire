@@ -1,0 +1,29 @@
+{
+  "name": "storm_bin/project",
+  "type": "project",
+  "description": "Un squelette de projet Storm v0",
+  "require": {
+    "php": ">=8.0",
+    "vlucas/phpdotenv": "^5.6",
+    "illuminate/view": "^12.0",
+    "illuminate/database": "^12.0",
+    "illuminate/support": "^12.0",
+    "illuminate/validation": "^12.1",
+    "illuminate/translation": "^12.1",
+    "illuminate/http": "^12.2",
+    "illuminate/routing": "^12.2",
+    "illuminate/session": "^12.2",
+    "illuminate/log": "^12.2",
+    "illuminate/config": "^12.2",
+    "illuminate/pagination": "^12.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "StormBin\\Package\\": "vendor/storm/framework/src/",
+      "App\\":"app",
+      "App\\Api\\":"app/api",
+      "App\\Web\\":"app/web"
+    }
+  }
+  
+}

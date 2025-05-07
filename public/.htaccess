@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /POO/task-manager/public/
+
+# Autoriser l'accès aux fichiers et dossiers existants (comme Bootstrap)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Rediriger toutes les autres requêtes vers index.php
+RewriteRule ^ index.php [QSA,L]
