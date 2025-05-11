@@ -1,0 +1,143 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="Page-1" id="3WPuclfMck0WZAJVlhRm">
+    <mxGraphModel dx="772" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-1" value="Utilisateur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="138" y="-1081" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-2" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="152" y="-320" as="sourcePoint" />
+            <mxPoint x="152" y="-1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="445" y="-1079" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-4" value="&lt;span style=&quot;font-size:12.0pt;line-height:107%;&lt;br/&gt;font-family:&amp;quot;Times New Roman&amp;quot;,serif;mso-fareast-font-family:Calibri;mso-fareast-theme-font:&lt;br/&gt;minor-latin;mso-ansi-language:FR;mso-fareast-language:EN-US;mso-bidi-language:&lt;br/&gt;AR-SA&quot;&gt;Système&amp;nbsp;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="475" y="-1062" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-5" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="504" y="-320" as="sourcePoint" />
+            <mxPoint x="504" y="-1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-6" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="500" y="-972" width="10" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-7" value="&lt;span style=&quot;line-height: 107%;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;1 : Cliquer s&#39;inscrire&lt;/font&gt;&lt;/span&gt;" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="155" y="-971" as="sourcePoint" />
+            <mxPoint x="499" y="-971" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-8" value="&lt;span style=&quot;line-height: 107%;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;2 : Afficher le formulaire d&#39;inscription&lt;/font&gt;&lt;/span&gt;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry x="0.0035" relative="1" as="geometry">
+            <mxPoint x="495" y="-932" as="sourcePoint" />
+            <mxPoint x="155" y="-932" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-9" value="&lt;b&gt;Loop&amp;nbsp;&lt;/b&gt;[infos incorrectes et essaie &amp;gt;3]" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=214;height=15;" parent="1" vertex="1">
+          <mxGeometry x="96" y="-734" width="610" height="193" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-11" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="500" y="-610" width="10" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-12" value="&lt;span style=&quot;line-height: 107%;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;4 : Soumettre le formulaire&lt;/font&gt;&lt;/span&gt;" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry x="-0.0014" width="80" relative="1" as="geometry">
+            <mxPoint x="155" y="-606" as="sourcePoint" />
+            <mxPoint x="499" y="-607" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-13" value="&lt;span style=&quot;line-height: 107%;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;4 : Soumettre le formulaire&lt;/font&gt;&lt;/span&gt;" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry x="0.0523" y="6" width="80" relative="1" as="geometry">
+            <mxPoint x="154" y="-791" as="sourcePoint" />
+            <mxPoint x="498" y="-791" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-14" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;6 : Afficher message erreur&lt;/font&gt;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="505" y="-696" as="sourcePoint" />
+            <mxPoint x="145" y="-696" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-16" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;8:&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;Rediriger vers page de connexion&lt;/span&gt;&lt;/font&gt;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="505" y="-385" as="sourcePoint" />
+            <mxPoint x="153" y="-385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-21" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="500" y="-395" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-22" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="505" y="-598" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-23" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;5 : Verifier information&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="-610" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="540" y="-580" />
+            </Array>
+            <mxPoint x="515" y="-580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-24" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="150" y="-662" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-25" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;3 :&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;Remplir formulaire&lt;/span&gt;&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" parent="1" target="dgJ2CdRcG6Ybd05e3VIU-24" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="155" y="-682" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="185" y="-652" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-26" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="500" y="-793" width="10" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-27" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="504" y="-785" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-28" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;5 : Verifier information&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="511" y="-793" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="541" y="-763" />
+            </Array>
+            <mxPoint x="516" y="-763" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-29" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="149" y="-872" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-30" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;3 : Remplir le formulaire&lt;/font&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" parent="1" target="dgJ2CdRcG6Ybd05e3VIU-29" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="154" y="-892" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="184" y="-862" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-31" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="501" y="-463" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dgJ2CdRcG6Ybd05e3VIU-33" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;7 : Creer compte&lt;/span&gt;" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="508" y="-463" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="538" y="-433" />
+            </Array>
+            <mxPoint x="513" y="-433" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

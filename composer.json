@@ -15,7 +15,8 @@
     "illuminate/session": "^12.2",
     "illuminate/log": "^12.2",
     "illuminate/config": "^12.2",
-    "illuminate/pagination": "^12.4"
+    "illuminate/pagination": "^12.4",
+    "fedapay/fedapay-php": "^0.4.5"
   },
   "autoload": {
     "psr-4": {

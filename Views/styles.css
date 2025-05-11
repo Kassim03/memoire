@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap");
 
+
 :root {
   --primary-color: #0f1a2c;
   --secondary-color: #f6ac0f;
@@ -802,3 +803,5 @@ nav {
     gap: 2rem;
   }
 }
+
+
