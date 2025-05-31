@@ -1,0 +1,67 @@
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f1a2c',
+                        secondary: '#f6ac0f',
+                        accentBlue: '#1777ff',
+                        textDark: '#0f1a2a',
+                        textLight: '#64748b',
+                        bodyBg: '#f0f2f5',
+                        cardBg: '#f8fafc',
+                    },
+                    borderRadius: {
+                        DEFAULT: '8px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    .dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.dropdown-menu a,
+.dropdown-menu form button {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu form button:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-container.show .dropdown-menu {
+  display: block;
+}

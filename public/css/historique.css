@@ -1,0 +1,291 @@
+/* Variables CSS - Copiées de votre dashboard pour la cohérence */
+:root {
+    --primary-color: #0f1a2c;
+    /* Bleu nuit */
+    --secondary-color: #f6ac0f;
+    /* Orange vif */
+    --accent-blue: #1777ff;
+    /* Bleu vibrant */
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --extra-light: #f8fafc;
+    --white: #ffffff;
+    --header-font: "Playfair Display", serif;
+    --accent-blue-rgb: 23, 119, 255;
+    /* RGB de #1777ff pour les hover */
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    color: var(--text-dark);
+    background: var(--extra-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    /* Pour s'assurer que le footer reste en bas */
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ---------------- NAVBAR - Copiée de votre dashboard ---------------- */
+nav {
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav__bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+}
+
+.logo div {
+    width: 42px;
+    height: 42px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    display: grid;
+    place-content: center;
+    border-radius: 0.4rem;
+    font-family: var(--header-font);
+    font-size: 1.1rem;
+}
+
+.logo span {
+    line-height: 1.1;
+    font-family: var(--header-font);
+}
+
+.nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: max-height 0.4s ease;
+}
+
+.nav__links a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav__links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Hamburger */
+.nav__toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ---------------- HEADER - Adapté pour l'historique ---------------- */
+.header {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-blue));
+    color: var(--white);
+    padding: 4rem 1.5rem 2rem;
+    /* Moins de padding en bas */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.header .icon-display {
+    width: 80px;
+    height: 80px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    font-family: var(--header-font);
+    font-size: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.header p {
+    opacity: 0.85;
+}
+
+/* ---------------- CONTENU DE L'HISTORIQUE ---------------- */
+.history__container {
+    flex: 1;
+    /* Prend l'espace restant pour pousser le footer vers le bas */
+    max-width: 1000px;
+    /* Plus large pour le tableau */
+    margin: 3rem auto 3rem;
+    /* Remonte pour se superposer au header */
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.history__section {
+    margin-bottom: 2.5rem;
+}
+
+.history__section h2 {
+    font-family: var(--header-font);
+    font-size: 1.8rem;
+    margin-bottom: 1.3rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Tableau des réservations */
+.reservations-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    background: var(--white);
+    border-radius: 0.8rem;
+    overflow: hidden;
+    /* Important pour les coins arrondis */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.reservations-table thead {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.reservations-table th,
+.reservations-table td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--extra-light);
+}
+
+.reservations-table tbody tr:nth-child(even) {
+    background: var(--extra-light);
+}
+
+.reservations-table tbody tr:hover {
+    background: rgba(var(--accent-blue-rgb), 0.1);
+}
+
+/* ---------------- FOOTER - Copié de votre dashboard ---------------- */
+.footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 3rem 1.5rem 1rem;
+    margin-top: auto;
+    /* Pousse le footer vers le bas */
+}
+
+.footer_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer__col h4 {
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.footer__logo {
+    margin-bottom: 1rem;
+}
+
+.footer__bar {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+/* ---------------- RESPONSIVE NAV - Copié de votre dashboard ---------------- */
+@media (max-width: 768px) {
+    .nav__toggle {
+        display: block;
+    }
+
+    .nav__links {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        background: var(--primary-color);
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .nav__links li {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+
+    .nav__links a {
+        display: block;
+        padding: 1rem 1.5rem;
+    }
+
+    .nav__links.show {
+        max-height: 320px;
+    }
+
+    /* Ajustements responsive pour l'historique */
+    .history__container {
+        margin: -2rem 1rem 2rem;
+        /* Moins de marge latérale sur mobile */
+        padding: 1.5rem;
+    }
+
+    .reservations-table th,
+    .reservations-table td {
+        padding: 0.8rem;
+        /* Moins de padding sur mobile */
+        font-size: 0.8rem;
+    }
+}
+
