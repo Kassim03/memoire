@@ -93,7 +93,7 @@
           <h4>Salle Pro+</h4>
           <p>Un espace haut de gamme pour vos rencontres d'affaires stratégiques réussies.</p>
         </div>
-        <h3>15.000 FCFA<span>/jour</span></h3>
+        <h3>100 FCFA<span>/jour</span></h3>
 
       </div>
     </div>
@@ -104,7 +104,7 @@
           <h4>Salle Collaborative</h4>
           <p>Conçue pour travailler en équipe, partager des idées et avancer ensemble.</p>
         </div>
-        <h3>16.000 FCFA<span>/jour</span></h3>
+        <h3>125 FCFA<span>/jour</span></h3>
 
       </div>
     </div>
@@ -118,7 +118,7 @@
             
           </p>
         </div>
-        <h3>20.000 FCFA<span>/jour</span></h3>
+        <h3>150 FCFA<span>/jour</span></h3>
 
       </div>
     </div>

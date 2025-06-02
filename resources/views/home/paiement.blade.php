@@ -168,7 +168,7 @@
 
             if (payBtn) {
                 FedaPay.init("#pay-btn", {
-                    public_key: "pk_sandbox_pcJ_JzC6Yq7Kr08k-mhI008H",
+                    public_key: "pk_live_Xzoyr48Fxd0AjUrk3wVVF2so",
                     transaction: {
                         amount: parseInt(amountInput.value) || 0,
                         description: 'Paiement de réservation BookWork'

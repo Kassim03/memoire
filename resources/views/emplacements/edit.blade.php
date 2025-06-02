@@ -2,6 +2,7 @@
 
 @section('content')
     <style>
+        
         .form-section {
             background: #f9f9f9;
             border-radius: 12px;

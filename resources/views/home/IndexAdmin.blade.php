@@ -95,7 +95,7 @@
                 </div>
 
                 <div>
-                    <label for="tarif" class="block text-sm font-medium text-gray-700">Tarif (par heure)</label>
+                    <label for="tarif_hr" class="block text-sm font-medium text-gray-700">Tarif (par heure)</label>
                     <input type="number" name="tarif" id="tarif" step="0.01" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-secondary focus:border-secondary">
                 </div>
 
