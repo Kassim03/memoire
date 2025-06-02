@@ -77,3 +77,6 @@ Route::delete('/Reservation/Supprimer/{id}', [ReservationController::class, 'des
 Route::get('/Reservation/Modifier/{id}', [ReservationController::class, 'edit'])->name('reservations.edit');
 
 
+Route::post('/admin/set-admin/{id}', [AdminController::class, 'setAdmin'])->name('admin.setAdmin');
+Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+Route::post('/admin/users/{id}/toggle-role', [AdminController::class, 'toggleRole'])->name('admin.toggleRole');

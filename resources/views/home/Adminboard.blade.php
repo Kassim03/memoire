@@ -647,7 +647,6 @@
                                 </tr>
                             </thead>
                             <tbody id="clients-table-body" class="bg-white divide-y divide-gray-200">
-
                                 @foreach ($users as $user)
                                 <tr class="hover:bg-gray-50 transition duration-150 ease-in-out"> {{-- Effet hover pour les lignes --}}
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $user->id }}</td>
@@ -665,7 +664,6 @@
                                         @else
                                             Aucune réservation
                                         @endif
-
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                         {{-- Boutons d'action pour chaque utilisateur --}}
@@ -673,14 +671,35 @@
                                             <a href="/VoirDetails" class="text-blue-600 hover:text-blue-900" title="Voir les détails">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="/Nodifier" class="text-yellow-600 hover:text-yellow-900" title="Modifier">
+                                            <a href="/Modifier" class="text-yellow-600 hover:text-yellow-900" title="Modifier">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a href="/Supprimer" class="text-red-600 hover:text-red-900" title="Supprimer">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
+
+                                            {{-- Bouton dynamique Administrateur / Renommer Utilisateur --}}
+                                            <form action="{{ route('admin.toggleRole', $user->id) }}" method="POST" class="inline">
+                                                @csrf
+                                                <button type="submit"
+                                                    title="{{ $user->role === 'admin' ? 'Repasser Utilisateur' : 'Nommer Administrateur' }}"
+                                                    class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-xs">
+                                                    {{ $user->role === 'admin' ? 'Renommer Utilisateur' : 'Administrateur' }}
+                                                </button>
+                                            </form>
+
+                                            {{-- Bouton Supprimer définitif --}}
+                                            <form action="{{ route('admin.deleteUser', $user->id) }}" method="POST" class="inline"
+                                                onsubmit="return confirm('Confirmer la suppression de cet utilisateur ?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" title="Supprimer définitivement"
+                                                    class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs">
+                                                    Supprimer
+                                                </button>
+                                            </form>
                                         </div>
-                                    </td>
+                                    </td>  
                                 </tr>
                                 @endforeach
 
@@ -692,45 +711,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-
-
-
-                <div id="utilisateurs-content" class="content-section">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800">Gestion des Utilisateurs</h3>
-                        <button id="add-user-btn" class="bg-secondary text-cardBg px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-200 !rounded-button whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="w-4 h-4 flex items-center justify-center mr-1"><i class="ri-user-add-line"></i></div>
-                                <span>Ajouter un utilisateur</span>
-                            </div>
-                        </button>
-                    </div>
-                    <table class="min-w-full bg-cardBg border border-gray-200 rounded-lg">
-                        <thead>
-                            <tr class="bg-gray-50">
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Utilisateur</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom Complet</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rôle</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Création</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="users-table-body">
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="parametres-content" class="content-section">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Paramètres du Système</h3>
-                    <p class="text-gray-600 mb-4">Configurez les options générales de l'application.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <button class="bg-secondary text-cardBg px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-200 !rounded-button">Paramètres de Paiement</button>
-                        <button class="bg-secondary text-cardBg px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-200 !rounded-button">Préférences de Notification</button>
-                    </div>
-                </div>
+                </div>   
             </main>
         </div>
     </div>

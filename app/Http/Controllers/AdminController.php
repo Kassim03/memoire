@@ -46,5 +46,29 @@ class AdminController extends Controller
 
         return view('home.Adminboard', $data);
     }
+
+    public function setAdmin($id) {
+    $user = User::findOrFail($id);
+    $user->role = 'administrateur'; // adapte selon ton système
+    $user->save();
+    return back()->with('success', 'Utilisateur défini comme administrateur.');
+}
+
+public function deleteUser($id) {
+    $user = User::findOrFail($id);
+    $user->delete();
+    return back()->with('success', 'Utilisateur supprimé.');
+}
+
+public function toggleRole($id)
+{
+    $user = User::findOrFail($id);
+    $user->role = $user->role === 'admin' ? 'user' : 'admin';
+    $user->save();
+
+    return back()->with('success', 'Rôle mis à jour avec succès.');
+}
+
+
 }
 
