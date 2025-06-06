@@ -5,6 +5,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Administrateur | BookWork</title>
+    <style>
+        .footer {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 40px 20px 20px;
+            font-family: sans-serif;
+        }
+
+        .footer_container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer__col {
+            flex: 1 1 300px;
+        }
+
+        .footer__logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo-text {
+            background-color: white;
+            color: #1e3a8a;
+            font-weight: bold;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 20px;
+        }
+
+        .footer__col h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .footer__col p {
+            margin: 5px 0;
+        }
+
+        .footer__bar {
+            text-align: center;
+            padding-top: 15px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+        }
+    </style>
 
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
@@ -281,11 +335,11 @@
 </head>
 
 <script>
-    document.querySelectorAll('.action-btn').forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
+    document.querySelectorAll('.action-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
             e.stopPropagation(); // Pour éviter de fermer instantanément
             // Fermer tous les autres menus
-            document.querySelectorAll('.dropdown-container').forEach(function (container) {
+            document.querySelectorAll('.dropdown-container').forEach(function(container) {
                 if (container !== btn.parentElement) {
                     container.classList.remove('show');
                 }
@@ -295,8 +349,8 @@
         });
     });
 
-    window.addEventListener('click', function () {
-        document.querySelectorAll('.dropdown-container').forEach(function (container) {
+    window.addEventListener('click', function() {
+        document.querySelectorAll('.dropdown-container').forEach(function(container) {
             container.classList.remove('show');
         });
     });
@@ -395,7 +449,7 @@
                     </div>
                 </div>
             </header>
-            
+
 
             <main class="flex-1 overflow-y-auto p-6">
                 <div id="dashboard-content" class="content-section active">
@@ -408,7 +462,7 @@
                             <p class="text-gray-500 text-sm">Revenus</p>
                             <h3 class="text-xl font-bold text-gray-800" id="revenue-count">{{$revenu_total}}</h3>
                         </div>
-                        
+
                         <div class="bg-cardBg rounded-lg shadow-sm p-4">
                             <p class="text-gray-500 text-sm">Utilisateurs</p>
                             <h3 class="text-xl font-bold text-gray-800" id="users-count">{{ $nbre_users }}</h3>
@@ -418,15 +472,11 @@
                     <div class="bg-cardBg rounded-lg shadow-sm mb-6">
                         <div class="border-b">
                             <div class="flex overflow-x-auto">
-                                <button class="tab-button active px-6 py-3 text-gray-700 hover:text-secondary border-b-2 border-transparent hover:border-secondary focus:outline-none whitespace-nowrap" data-tab="overview-tab">Vue d'ensemble</button>
                                 <button class="tab-button px-6 py-3 text-gray-700 hover:text-secondary border-b-2 border-transparent hover:border-secondary focus:outline-none whitespace-nowrap" data-tab="recent-reservations-dashboard-tab">Réservations récentes</button>
                             </div>
                         </div>
                         <div class="p-6">
-                            <div class="tab-content active" id="overview-tab">
-                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Aperçu rapide</h3>
-                                <p class="text-gray-600">Statistiques clés de votre activité.</p>
-                            </div>
+                            
                             <div class="tab-content" id="recent-reservations-dashboard-tab">
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Réservations récentes</h3>
                                 <table class="min-w-full bg-cardBg border border-gray-200 rounded-lg">
@@ -438,46 +488,40 @@
                                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date de reservation</th>
                                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
                                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Montant</th>
-                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="recent-reservations-table-body">
                                         @forelse($recentPerClient as $reservation)
-                                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                                    {{ $reservation->id }}
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                                    {{ $reservation->user->email ?? 'Inconnu' }}
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                                    {{ $reservation->emplacement->nom ?? 'Non défini' }}
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                                    {{ \Carbon\Carbon::parse($reservation->date_reserv)->format('d/m/Y') }}
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                                    <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full
+                                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                                {{ $reservation->id }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                                {{ $reservation->user->email ?? 'Inconnu' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                                {{ $reservation->emplacement->nom ?? 'Non défini' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                                {{ \Carbon\Carbon::parse($reservation->date_reserv)->format('d/m/Y') }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full
                                                         {{ $reservation->statut == 'confirmée' ? 'text-green-700 bg-green-100' : 'text-yellow-700 bg-yellow-100' }}">
-                                                        {{ ucfirst($reservation->statut) }}
-                                                    </span>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                                    {{ number_format($reservation->montant, 0, ',', ' ') }} CFA
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                                    <a href="{{ route('reservations.show', $reservation->id) }}" 
-                                                    class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
-                                                        Voir
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                    {{ ucfirst($reservation->statut) }}
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                                {{ number_format($reservation->montant, 0, ',', ' ') }} CFA
+                                            </td>
+                                           
+                                        </tr>
                                         @empty
-                                            <tr>
-                                                <td colspan="7" class="text-center px-6 py-4 text-sm text-gray-500 italic">
-                                                    Aucune réservation trouvée.
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td colspan="7" class="text-center px-6 py-4 text-sm text-gray-500 italic">
+                                                Aucune réservation trouvée.
+                                            </td>
+                                        </tr>
                                         @endforelse
                                     </tbody>
 
@@ -491,6 +535,23 @@
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-lg font-semibold text-gray-800">Liste des Réservations</h3>
                     </div>
+
+                    <!-- Barre de recherche -->
+                    <div class="mb-6">
+                        <div class="relative max-w-md">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input
+                                type="text"
+                                id="search-input"
+                                class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="Rechercher par ID..."
+                                autocomplete="off">
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Tapez l'ID de la réservation pour filtrer les résultats</p>
+                    </div>
+
                     <table class="min-w-full bg-cardBg border border-gray-200 rounded-lg">
                         <thead>
                             <tr class="bg-orange-100 from-blue-600 to-purple-600 text-bleu"> {{-- En-tête avec un dégradé --}}
@@ -508,49 +569,59 @@
                             </tr>
                         </thead>
 
-                        <tbody id="reservations-table-body" class="bg-white divide-y divide-gray-200"></tbody>
-                       @foreach ($reservations as $reservation)
-                                <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->id }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ optional($reservation->emplacement)->nom ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ optional($reservation->user)->email ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->participants ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->commentaires ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->montant ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->date_reserv ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->heure_debut ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->heure_fin ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->statut ?? '—' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <div class="flex items-center space-x-2">
-                                            {{-- Voir --}}
-                                            <a href="/Reservation/Voir/{{ $reservation->id }}" class="text-blue-600 hover:text-blue-900" title="Voir les détails">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
+                        <tbody id="reservations-table-body" class="bg-white divide-y divide-gray-200">
+                            @foreach ($reservations as $reservation)
+                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out reservation-row" data-id="{{ $reservation->id }}">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 reservation-id">{{ $reservation->id }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ optional($reservation->emplacement)->nom ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ optional($reservation->user)->email ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->participants ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->commentaires ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->montant ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->date_reserv ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->heure_debut ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->heure_fin ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $reservation->statut ?? '—' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <div class="flex items-center space-x-2">
+                                        {{-- Voir --}}
+                                        <a href="/Reservation/Voir/{{ $reservation->id }}" class="text-blue-600 hover:text-blue-900" title="Voir les détails">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
 
-                                            {{-- Modifier --}}
-                                            <a href="/Reservation/Modifier/{{ $reservation->id }}" title="Modifier">
-                                                <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">
-                                                    Modifier
-                                                </button>
-                                            </a>
+                                        {{-- Modifier --}}
+                                        <a href="/Reservation/Modifier/{{ $reservation->id }}" title="Modifier">
+                                            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">
+                                                Modifier
+                                            </button>
+                                        </a>
 
-                                            {{-- Supprimer --}}
-                                            <form action="/Reservation/Supprimer/{{ $reservation->id }}" method="POST" onsubmit="return confirm('Confirmer la suppression ?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
-                                                    Supprimer
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        {{-- Supprimer --}}
+                                        <form action="/Reservation/Supprimer/{{ $reservation->id }}" method="POST" onsubmit="return confirm('Confirmer la suppression ?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
+                                                Supprimer
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                             @endforeach
-
                         </tbody>
                     </table>
+
+                    <!-- Message quand aucun résultat n'est trouvé -->
+                    <div id="no-results" class="hidden text-center py-8">
+                        <div class="text-gray-500">
+                            <i class="fas fa-search text-4xl mb-4"></i>
+                            <p class="text-lg">Aucune réservation trouvée</p>
+                            <p class="text-sm">Aucune réservation ne correspond à votre recherche.</p>
+                        </div>
+                    </div>
                 </div>
+
+
 
                 <div id="emplacements-content" class="content-section">
                     <div class="flex justify-between items-center mb-6">
@@ -558,15 +629,32 @@
                         <button id="add-emplacement-btn" class="bg-secondary text-cardBg px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-200 !rounded-button whitespace-nowrap">
                             <div class="flex items-center">
                                 <a href="{{ route('emplacements.create') }}" id="add-emplacement-btn" class="bg-secondary text-cardBg px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-200 !rounded-button whitespace-nowrap inline-block">
-                        <div class="flex items-center">
-                            <div class="w-4 h-4 flex items-center justify-center mr-1"><i class="ri-add-line"></i></div>
-                            <span>Ajouter un emplacement</span>
-                        </div>
-                    </a>
-
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 flex items-center justify-center mr-1"><i class="ri-add-line"></i></div>
+                                        <span>Ajouter un emplacement</span>
+                                    </div>
+                                </a>
                             </div>
                         </button>
                     </div>
+
+                    <!-- Barre de recherche -->
+                    <div class="mb-6">
+                        <div class="relative max-w-md">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input
+                                type="text"
+                                id="search-input"
+                                class="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="Rechercher par nom de salle..."
+                                autocomplete="off"
+                                onkeyup="filterEmplacements()">
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Tapez le nom de la salle pour filtrer les résultats</p>
+                    </div>
+
                     <table class="min-w-full bg-cardBg border border-gray-200 rounded-lg">
                         <thead>
                             <tr class="bg-orange-100 from-blue-600 to-purple-600 text-bleu"> {{-- En-tête avec un dégradé --}}
@@ -579,19 +667,15 @@
                             </tr>
                         </thead>
                         <tbody id="emplacements-table-body" class="bg-white divide-y divide-gray-200">
-
                             @foreach ($emplacements as $emplacement)
-
-                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
-
+                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out emplacement-row">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $emplacement->id }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $emplacement->nom }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 emplacement-nom">{{ $emplacement->nom }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $emplacement->type }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $emplacement->capacites  }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $emplacement->tarif_hr }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <div class="flex items-center space-x-2">
-
                                         {{-- Voir --}}
                                         <a href="/Emplacement/Voir/{{ $emplacement->id }}" class="text-blue-600 hover:text-blue-900" title="Voir les détails">
                                             <i class="fas fa-eye"></i>
@@ -614,7 +698,6 @@
                                         </form>
                                     </div>
                                 </td>
-
                             </tr>
                             @endforeach
 
@@ -624,115 +707,145 @@
                             </tr>
                             @endif
                         </tbody>
-
-
                     </table>
+
+                    <!-- Message quand aucun résultat n'est trouvé -->
+                    <div id="no-results" class="hidden text-center py-8">
+                        <div class="text-gray-500">
+                            <i class="fas fa-search text-4xl mb-4"></i>
+                            <p class="text-lg">Aucun emplacement trouvé</p>
+                            <p class="text-sm">Aucun emplacement ne correspond à votre recherche.</p>
+                        </div>
+                    </div>
                 </div>
+
+
 
                 <div id="clients-content" class="content-section">
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-lg font-semibold text-gray-800">Gestion des Clients</h3>
                     </div>
-                    <div class="overflow-x-auto shadow-lg rounded-lg"> {{-- Ajouté un conteneur pour le défilement horizontal sur petits écrans et une ombre --}}
-                        <table class="min-w-full bg-cardBg border border-gray-200 rounded-lg divide-y divide-gray-200">
-                            <thead>
-                                <tr class="bg-orange-100 from-blue-600 to-purple-600 text-bleu"> {{-- En-tête avec un dégradé --}}
-                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tl-lg">ID Client</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Nom Complet</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Email</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Téléphone</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Total Réservations</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Dernière Réservation</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tr-lg">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="clients-table-body" class="bg-white divide-y divide-gray-200">
-                                @foreach ($users as $user)
-                                <tr class="hover:bg-gray-50 transition duration-150 ease-in-out"> {{-- Effet hover pour les lignes --}}
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $user->id }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $user->name }} {{ $user->surname }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $user->email }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $user->telephone }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                        {{-- Remplacez ceci par le nombre réel de réservations de l'utilisateur --}}
-                                        {{ $user->reservations_count ?? 0 }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                        {{-- Remplacez ceci par la date de dernière réservation de l'utilisateur --}}
-                                        @if ($user->latestReservation && $user->latestReservation->emplacement)
+                    <div class="mb-6">
+                        <div class="relative max-w-md">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input
+                                type="text"
+                                id="email-search"
+                                placeholder="Rechercher par email..."
+                                onkeyup="filterClients()"
+                                class="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm">
+                            <button
+                                onclick="clearSearch()"
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                                title="Effacer la recherche">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto shadow-lg rounded-lg"> {{-- Ajouté un conteneur pour le défilement horizontal sur petits écrans et une ombre --}}
+                            <table class="min-w-full bg-cardBg border border-gray-200 rounded-lg divide-y divide-gray-200">
+                                <thead>
+                                    <tr class="bg-orange-100 from-blue-600 to-purple-600 text-bleu"> {{-- En-tête avec un dégradé --}}
+                                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tl-lg">ID Client</th>
+                                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Nom Complet</th>
+                                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Email</th>
+                                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Téléphone</th>
+                                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Total Réservations</th>
+                                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Dernière Réservation</th>
+                                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tr-lg">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clients-table-body" class="bg-white divide-y divide-gray-200">
+                                    @foreach ($users as $user)
+                                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out"> {{-- Effet hover pour les lignes --}}
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $user->id }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $user->name }} {{ $user->surname }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $user->email }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $user->telephone }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                            {{-- Remplacez ceci par le nombre réel de réservations de l'utilisateur --}}
+                                            {{ $user->reservations_count ?? 0 }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                            {{-- Remplacez ceci par la date de dernière réservation de l'utilisateur --}}
+                                            @if ($user->latestReservation && $user->latestReservation->emplacement)
                                             {{ $user->latestReservation->emplacement->nom }}
-                                        @else
+                                            @else
                                             Aucune réservation
-                                        @endif
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        {{-- Boutons d'action pour chaque utilisateur --}}
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/VoirDetails" class="text-blue-600 hover:text-blue-900" title="Voir les détails">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="/Modifier" class="text-yellow-600 hover:text-yellow-900" title="Modifier">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="/Supprimer" class="text-red-600 hover:text-red-900" title="Supprimer">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
+                                            @endif
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            {{-- Boutons d'action pour chaque utilisateur --}}
+                                            <div class="flex items-center space-x-2">
+                                                <a href="/VoirDetails" class="text-blue-600 hover:text-blue-900" title="Voir les détails">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="/Modifier" class="text-yellow-600 hover:text-yellow-900" title="Modifier">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="/Supprimer" class="text-red-600 hover:text-red-900" title="Supprimer">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
 
-                                            {{-- Bouton dynamique Administrateur / Renommer Utilisateur --}}
-                                            <form action="{{ route('admin.toggleRole', $user->id) }}" method="POST" class="inline">
-                                                @csrf
-                                                <button type="submit"
-                                                    title="{{ $user->role === 'admin' ? 'Repasser Utilisateur' : 'Nommer Administrateur' }}"
-                                                    class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-xs">
-                                                    {{ $user->role === 'admin' ? 'Renommer Utilisateur' : 'Administrateur' }}
-                                                </button>
-                                            </form>
+                                                {{-- Bouton dynamique Administrateur / Renommer Utilisateur --}}
+                                                <form action="{{ route('admin.toggleRole', $user->id) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        title="{{ $user->role === 'admin' ? 'Repasser Utilisateur' : 'Nommer Administrateur' }}"
+                                                        class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-xs">
+                                                        {{ $user->role === 'admin' ? 'Renommer Utilisateur' : 'Administrateur' }}
+                                                    </button>
+                                                </form>
 
-                                            {{-- Bouton Supprimer définitif --}}
-                                            <form action="{{ route('admin.deleteUser', $user->id) }}" method="POST" class="inline"
-                                                onsubmit="return confirm('Confirmer la suppression de cet utilisateur ?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" title="Supprimer définitivement"
-                                                    class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs">
-                                                    Supprimer
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>  
-                                </tr>
-                                @endforeach
+                                                {{-- Bouton Supprimer définitif --}}
+                                                <form action="{{ route('admin.deleteUser', $user->id) }}" method="POST" class="inline"
+                                                    onsubmit="return confirm('Confirmer la suppression de cet utilisateur ?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" title="Supprimer définitivement"
+                                                        class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs">
+                                                        Supprimer
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
 
-                                @if ($users->isEmpty())
-                                <tr>
-                                    <td colspan="7" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">Aucun utilisateur trouvé.</td>
-                                </tr>
-                                @endif
-                            </tbody>
-                        </table>
+                                    @if ($users->isEmpty())
+                                    <tr>
+                                        <td colspan="7" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">Aucun utilisateur trouvé.</td>
+                                    </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>   
             </main>
         </div>
     </div>
 
-    <footer>
+    <footer class="footer">
         <div class="footer_container">
             <div class="footer__col">
                 <div class="logo footer__logo">
-                    <div>BW</div>
-                    <span>Book<br />Work</span>
+                    <div class="logo-text">BW</div>
+                    <span>Book<br>Work</span>
                 </div>
                 <p>Réservez rapidement vos salles ou espaces modernes.</p>
             </div>
             <div class="footer__col">
                 <h4>Contact</h4>
-                <p>Email: info@bookwork.com</p>
-                <p>Téléphone: +229 01 64 32 12 08</p>
+                <p>Email : info@bookwork.com</p>
+                <p>Téléphone : +229 01 64 32 12 08</p>
             </div>
         </div>
-        <div class="footer__bar">Copyright © 2025 BookWork. Tous droits réservés.</div>
+        <div class="footer__bar">
+            &copy; 2025 BookWork. Tous droits réservés.
+        </div>
     </footer>
+
 
     <script type="module">
         // Firebase SDK imports
@@ -1168,9 +1281,141 @@
                 });
             }
         });
-
-        
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const reservationRows = document.querySelectorAll('.reservation-row');
+            const noResultsDiv = document.getElementById('no-results');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.trim().toLowerCase();
+                let visibleCount = 0;
+
+                reservationRows.forEach(function(row) {
+                    const reservationId = row.querySelector('.reservation-id').textContent.toLowerCase();
+
+                    if (searchTerm === '' || reservationId.includes(searchTerm)) {
+                        row.style.display = '';
+                        visibleCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResultsDiv.style.display = 'block';
+                } else {
+                    noResultsDiv.style.display = 'none';
+                }
+            });
+
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    this.dispatchEvent(new Event('input'));
+                }
+            });
+        });
+    </script>
+
 </body>
+<script>
+    function filterEmplacements() {
+        const searchInput = document.getElementById('search-input');
+        const filter = searchInput.value.toLowerCase();
+        const tableBody = document.getElementById('emplacements-table-body');
+        const rows = tableBody.getElementsByClassName('emplacement-row');
+        const noResults = document.getElementById('no-results');
+        const table = tableBody.closest('table').parentElement;
+
+        let visibleRows = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+            const nomCell = rows[i].getElementsByClassName('emplacement-nom')[0];
+
+            if (nomCell) {
+                const nomText = nomCell.textContent || nomCell.innerText;
+                if (nomText.toLowerCase().indexOf(filter) > -1) {
+                    rows[i].style.display = '';
+                    visibleRows++;
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        if (visibleRows === 0 && filter !== '') {
+            table.style.display = 'none';
+            noResults.classList.remove('hidden');
+        } else {
+            table.style.display = 'block';
+            noResults.classList.add('hidden');
+        }
+    }
+
+    function clearSearch() {
+        const searchInput = document.getElementById('search-input');
+        searchInput.value = '';
+        filterEmplacements();
+        searchInput.focus();
+    }
+</script>
+<script>
+    function filterClients() {
+        const searchInput = document.getElementById('email-search');
+        const filter = searchInput.value.toLowerCase();
+        const tableBody = document.getElementById('clients-table-body');
+        const rows = tableBody.getElementsByTagName('tr');
+
+        for (let i = 0; i < rows.length; i++) {
+            const emailCell = rows[i].getElementsByTagName('td')[2]; // La colonne email est la 3ème (index 2)
+
+            if (emailCell) {
+                const emailText = emailCell.textContent || emailCell.innerText;
+                if (emailText.toLowerCase().indexOf(filter) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Afficher/masquer le message "Aucun résultat"
+        updateNoResultsMessage();
+    }
+
+    function updateNoResultsMessage() {
+        const tableBody = document.getElementById('clients-table-body');
+        const rows = tableBody.getElementsByTagName('tr');
+        let visibleRows = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+            if (rows[i].style.display !== 'none' && !rows[i].classList.contains('no-results-row')) {
+                visibleRows++;
+            }
+        }
+
+        // Supprimer l'ancien message s'il existe
+        const existingNoResultsRow = document.querySelector('.no-results-row');
+        if (existingNoResultsRow) {
+            existingNoResultsRow.remove();
+        }
+
+        // Ajouter le message si aucun résultat
+        if (visibleRows === 0) {
+            const noResultsRow = document.createElement('tr');
+            noResultsRow.className = 'no-results-row';
+            noResultsRow.innerHTML = '<td colspan="7" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">Aucun client trouvé pour cette recherche.</td>';
+            tableBody.appendChild(noResultsRow);
+        }
+    }
+
+    // Réinitialiser la recherche
+    function clearSearch() {
+        document.getElementById('email-search').value = '';
+        filterClients();
+    }
+</script>
 
 </html>

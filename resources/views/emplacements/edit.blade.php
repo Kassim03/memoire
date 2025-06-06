@@ -101,13 +101,24 @@
                 font-size: 22px;
             }
         }
+        .current-image {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .current-image img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
     </style>
 
     <div class="form-wrapper">
         <div class="form-section">
             <h1>Modifier l'emplacement</h1>
 
-            <form action="{{ route('emplacements.update', $emplacement->id) }}" method="POST">
+            <form action="{{ route('emplacements.update', $emplacement->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -116,11 +127,11 @@
                     <label for="type">Type d'emplacement</label>
                     <div class="radio-group">
                         <label>
-                            <input type="radio" name="type" value="Salle" {{ $emplacement->type == 'Salle' ? 'checked' : '' }} required>
+                            <input type="radio" name="type" value="salles" {{ $emplacement->type == 'salles' ? 'checked' : '' }} required>
                             Salle
                         </label>
                         <label>
-                            <input type="radio" name="type" value="Espace" {{ $emplacement->type == 'Espace' ? 'checked' : '' }} required>
+                            <input type="radio" name="type" value="espace" {{ $emplacement->type == 'espace' ? 'checked' : '' }} required>
                             Espace
                         </label>
                     </div>
@@ -140,20 +151,34 @@
 
                 {{-- Capacité --}}
                 <div class="form-group mb-3">
-                    <label for="capacite">Capacité</label>
-                    <input type="number" name="capacite" id="capacite" class="form-control" value="{{ $emplacement->capacites }}" placeholder=" ">
+                    <label for="capacites">Capacité</label>
+                    <input type="number" name="capacites" id="capacites" class="form-control" value="{{ $emplacement->capacites }}" placeholder=" ">
                 </div>
 
-                {{-- Montant --}}
+                {{-- Tarif --}}
                 <div class="form-group mb-3">
-                    <label for="montant">Tarif horaire (en FCFA)</label>
-                    <input type="number" name="montant" id="montant" class="form-control" value="{{ $emplacement->tarif_hr }}" step="0.01" placeholder=" ">
+                    <label for="tarif_hr">Tarif horaire (en FCFA)</label>
+                    <input type="number" name="tarif_hr" id="tarif_hr" class="form-control" value="{{ $emplacement->tarif_hr }}" step="0.01" placeholder=" ">
                 </div>
 
-                {{-- Bouton --}}
+                {{-- Image actuelle --}}
+                @if($emplacement->image)
+                    <div class="form-group mb-3 current-image">
+                        <label>Image actuelle</label><br>
+                        <img src="{{ asset('assets/' . $emplacement->image) }}" alt="Image actuelle">
+                    </div>
+                @endif
+
+                {{-- Nouvelle image --}}
+                <div class="form-group mb-3">
+                    <label for="image">Changer l'image</label>
+                    <input type="file" name="image" id="image" class="form-control">
+                </div>
+
+                {{-- Boutons --}}
                 <div class="form-group mt-4 text-center">
                     <button type="submit" class="btn btn-primary">Mettre à jour</button>
-                    <a href="{{ route('emplacements.index') }}" class="btn btn-secondary">Annuler</a>
+                    <a href="{{ route('adminboard') }}" class="btn btn-secondary">Annuler</a>
                 </div>
             </form>
         </div>
